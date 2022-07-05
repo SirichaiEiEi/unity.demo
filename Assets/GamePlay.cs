@@ -1,35 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class GamePlay : MonoBehaviour
 {
-    int counter=0;
-
-    void OnGUI()
+    public TMP_Text Text1;
+    private int counter;
+    void Start()
     {
-         GUI.Label (new Rect (100, 100, 200, 50), "COUNTER: " + counter); {
-                 }
+         counter = 0;
     }
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        Text1.text = "Score:" + counter;
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.gameObject.name.CompareTo("RedSphere") == 0)
-                if (Input.GetMouseButtonDown(0))
-                counter++;
+                counter = counter - 20;
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
                 if (hit.collider.gameObject.name.CompareTo("BlueSphere") == 0)
+                counter = counter + 10;
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
                 if (hit.collider.gameObject.name.CompareTo("GreenSphere") == 0)
+                counter = counter + 20;
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
