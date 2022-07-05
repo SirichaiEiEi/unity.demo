@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GamePlay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    int counter=0;
+
+    void OnGUI()
     {
-
+         GUI.Label (new Rect (100, 100, 200, 50), "COUNTER: " + counter); {
+                 }
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -20,6 +20,16 @@ public class GamePlay : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.gameObject.name.CompareTo("RedSphere") == 0)
+                if (Input.GetMouseButtonDown(0))
+                counter++;
+                {
+                    hit.collider.gameObject.SetActive(false);
+                }
+                if (hit.collider.gameObject.name.CompareTo("BlueSphere") == 0)
+                {
+                    hit.collider.gameObject.SetActive(false);
+                }
+                if (hit.collider.gameObject.name.CompareTo("GreenSphere") == 0)
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
