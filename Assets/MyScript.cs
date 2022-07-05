@@ -8,6 +8,10 @@ public class MyScript : MonoBehaviour
     void Start()
     {
         Debug.Log("Hello World");
+        int x = 10;
+        int y = 20;
+        int z = x + y;
+        print(z);
     }
 
     // Update is called once per frame
