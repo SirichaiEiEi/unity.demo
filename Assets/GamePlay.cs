@@ -15,6 +15,8 @@ public class GamePlay : MonoBehaviour
     void Update()
     {
         Text1.text = "Score:" + counter;
+        if (Text1.text == 120)
+            Text2.text = "You WIN";
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
