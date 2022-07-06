@@ -7,6 +7,7 @@ using System;
 public class GamePlay : MonoBehaviour
 {
     public TMP_Text Text1;
+    public TMP_Text Text2;
     private int counter;
     void Start()
     {
