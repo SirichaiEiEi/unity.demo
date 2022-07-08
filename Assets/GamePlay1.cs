@@ -10,16 +10,17 @@ public class GamePlay1 : MonoBehaviour
     public TMP_Text Text1;
     public TMP_Text Text2;
     public TMP_Text Text3;
-    public float TimeLeft;
+    private float TimeLeft;
     public bool TimerOn = false;
     private int counter;
-    private int countera;
+    private int a;
     void Start()
     {
         counter = 0;
-        countera = 0;
+        a = 0;
+        TimeLeft = 20;
         TimerOn = true;
-}
+    }
     void Update()
     {
         Text1.text = "Score:" + counter;
@@ -31,27 +32,29 @@ public class GamePlay1 : MonoBehaviour
             {
                 if (hit.collider.gameObject.name.CompareTo("RedSphere") == 0)
                     counter = counter - 20;
-                    countera ++;
+                    a = a + 1;
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
                 if (hit.collider.gameObject.name.CompareTo("BlueSphere") == 0)
                     counter = counter + 10;
-                    countera++;
+                    a = a + 1;
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
                 if (hit.collider.gameObject.name.CompareTo("GreenSphere") == 0)
                     counter = counter + 20;
-                    countera++;
+                    a = a + 1;
                 {
                     hit.collider.gameObject.SetActive(false);
                 }
+                if (counter == 120)
+                    Text2.text = "Mission Complet";
+                if (counter == 0)
+                    Text2.text = "Mission Failed";
+                if (a == 30)
+                    Text2.text = "Mission Failed";
             }
-            if (counter == 120)
-                Text2.text = "Mission Completed";
-            if (counter == 0)
-                Text2.text = "Mission Failed";
         }
         if (TimerOn)
         {

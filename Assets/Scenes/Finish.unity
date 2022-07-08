@@ -1403,8 +1403,7 @@ MonoBehaviour:
   Text1: {fileID: 860863126}
   Text2: {fileID: 1627193173}
   Text3: {fileID: 421889162}
-  TimeLeft: 20
-  TimerOn: 0
+  TimerOn: 1
 --- !u!81 &1339222249
 AudioListener:
   m_ObjectHideFlags: 0
