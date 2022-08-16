@@ -8,18 +8,10 @@ using UnityEngine.UI;
 public class GamePlay1 : MonoBehaviour
 {
     public TMP_Text Text1;
-    public TMP_Text Text2;
-    public TMP_Text Text3;
-    private float TimeLeft;
-    public bool TimerOn = false;
     private int counter;
-    private int a;
     void Start()
     {
         counter = 0;
-        a = 0;
-        TimeLeft = 20;
-        TimerOn = true;
     }
     void Update()
     {
@@ -30,54 +22,12 @@ public class GamePlay1 : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.gameObject.name.CompareTo("RedSphere") == 0)
-                    counter = counter - 20;
-                    a = a + 1;
+                if (hit.collider.CompareTag("Sphere"))
                 {
+                    counter = counter + 1;
                     hit.collider.gameObject.SetActive(false);
                 }
-                if (hit.collider.gameObject.name.CompareTo("BlueSphere") == 0)
-                    counter = counter + 10;
-                    a = a + 1;
-                {
-                    hit.collider.gameObject.SetActive(false);
-                }
-                if (hit.collider.gameObject.name.CompareTo("GreenSphere") == 0)
-                    counter = counter + 20;
-                    a = a + 1;
-                {
-                    hit.collider.gameObject.SetActive(false);
-                }
-                if (counter == 120)
-                    Text2.text = "Mission Complet";
-                if (counter == 0)
-                    Text2.text = "Mission Failed";
-                if (a == 30)
-                    Text2.text = "Mission Failed";
             }
         }
-        if (TimerOn)
-        {
-            if (TimeLeft > 0)
-            {
-                TimeLeft -= Time.deltaTime;
-                updateTimer(TimeLeft);
-            }
-            else
-            {
-                Text2.text = "Mission Failed";
-                TimeLeft = 0;
-                TimerOn = false;
-            }
-        }
-    }
-    void updateTimer(float currentTime)
-    {
-        currentTime += 1;
-
-        float minutes = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-
-        Text3.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
